@@ -1,1 +1,34 @@
+线性模型是最简单的模型，但是往往却也是比较有效的模型。线性模型形式简单，建模容易，常作为机器学习的首选模型，因为其蕴含机器学习的重要基本思想。
+
+##建模：
+给定数据集为D={(**x**<sub>1</sub>,y<sub>1</sub>),(**x**<sub>2</sub>,y<sub>2</sub>),...,(**x**<sub>n</sub>,y<sub>n</sub>)}，其中**x**<sub>i</sub>={x<sub>i1</sub>,x<sub>i2</sub>,...,x<sub>im</sub>}, y<sub>i</sub>∈**R**，建立模型如下：
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+$$y^i=h\_i(\theta)=\Theta^T x^i+\epsilon^i$$
+由**中心极限定理**可知：
+$$\epsilon^i \sim N(0,\sigma^2)$$
+即：$$P(\epsilon^i)={1\over\sqrt(2\pi\sigma)}exp(-{(\epsilon^i)^2\over2\sigma^2})$$
+故：
+$$P(y^i|x^i,\theta)={1\over\sqrt(2\pi\sigma)}exp(-{(y^i-\Theta^T x^i)^2\over2\sigma^2})$$
+根据**最大似然估计**，似然函数为：
+$$L(\theta=)=\prod_{i=1}^{m}{1\over\sqrt(2\pi\sigma)}exp(-{(y^i-\Theta^T x^i)^2\over2\sigma^2})$$
+此时，对数似然函数为：
+$$l(\theta)=logL(\theta)=mlog{1\over\sqrt(2\pi\sigma)}-{1\over\sigma^2}{1\over2}{\Sigma^m\_i}(y^i-\Theta^T x^i)^2$$
+将与θ相关的定义为**目标函数**：
+$$J(\theta)={1\over2}{\Sigma^m\_i}(h\_i(\theta)-y^i)^2$$
+> **注意：**上述过程解释了为什么选用RMSE作为线性回归的目标函数。
+
+##求解：
+根据**最大似然估计**求解步骤，对目标函数关于θ求偏导得：
+$$\Delta_θ J(θ)=\Delta\_θ{1\over2}{\Sigma^m\_i}(h\_i(\theta)-y^i)^2=X^TXθ-X^Ty=0$$
+则线性回归中，最小二乘意义下的参数最优解为：
+	$$θ=(X^TX)^{-1}X^Ty$$
+由于上式子不易计算，引入**梯度下降**进行求解θ：
+$$J(\theta)={1\over2}{\Sigma^m\_i}(h\_i(\theta)-y^i)^2$$
+$$\theta\_j=\theta\_j-\alpha{\partial{J\(\theta)}\over{\partial\theta}}$$
+$${\partial{J\(\theta)}\over{\partial\theta\_i}}=(h\_\theta(x)-y)x\_j$$
+
+
+
+
+
 
