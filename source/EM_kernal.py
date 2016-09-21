@@ -62,6 +62,8 @@ if __name__=='__main__':
     tau1=norm1.pdf(data)
     tau2=norm2.pdf(data)
     
+    tau=g.predict(data)
+    
     fig = plt.figure(figsize=(14, 7), facecolor='w')
     ax = fig.add_subplot(121, projection='3d')
     ax.scatter(data[:, 0], data[:, 1], data[:, 2], c='b', s=30, marker='o', depthshade=True)
