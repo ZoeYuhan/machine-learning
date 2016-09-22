@@ -59,19 +59,23 @@ if __name__=='__main__':
     #predict
     norm1=multivariate_normal(miu1,sigma1)
     norm2=multivariate_normal(miu2,sigma2)
+    norm3=multivariate_normal(g.means_[0],g.covar_[0])
+    norm4=multivariate_normal(g.means_[1],g.covar_[1])
     tau1=norm1.pdf(data)
     tau2=norm2.pdf(data)
+    tau3=norm3.pdf(data)
+    tau4=norm4.pdf(data)
     
-    tau=g.predict(data)
-    
-    fig = plt.figure(figsize=(14, 7), facecolor='w')
-    ax = fig.add_subplot(121, projection='3d')
+    #original data
+    fig = plt.figure(figsize=(21, 7), facecolor='w')
+    ax = fig.add_subplot(131, projection='3d')
     ax.scatter(data[:, 0], data[:, 1], data[:, 2], c='b', s=30, marker='o', depthshade=True)
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-    ax.set_title(u'原始数据', fontsize=18)
-    ax = fig.add_subplot(122, projection='3d')
+    ax.set_title('Raw data ', fontsize=18)
+    #EM kernel cluster
+    ax = fig.add_subplot(132, projection='3d')
     c1 = tau1 > tau2
     ax.scatter(data[c1, 0], data[c1, 1], data[c1, 2], c='r', s=30, marker='o', depthshade=True)
     c2 = tau1 < tau2
@@ -79,8 +83,17 @@ if __name__=='__main__':
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-    ax.set_title(u'EM算法分类', fontsize=18)
-
+    ax.set_title('EM cluster', fontsize=18)
+    #GMM cluster
+    ax = fig.add_subplot(133, projection='3d')
+    c1 = tau3 > tau4
+    ax.scatter(data[c1, 0], data[c1, 1], data[c1, 2], c='r', s=30, marker='o', depthshade=True)
+    c2 = tau3 < tau4
+    ax.scatter(data[c2, 0], data[c2, 1], data[c2, 2], c='g', s=30, marker='^', depthshade=True)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title('EM cluster', fontsize=18)
     plt.tight_layout()
     plt.show()
     
