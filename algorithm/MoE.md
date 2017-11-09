@@ -1,6 +1,6 @@
-#混合专家系统（Mixture of Experts）
+# 混合专家系统（Mixture of Experts）
 
-###**原理：**
+### **原理：**
 混合专家系统（MoE）是一种神经网络，也属于一种combine的模型。适用于数据集中的数据产生方式不同。不同于一般的神经网络的是它根据数据进行分离训练多个模型，各个模型被称为**专家**，而**门控模块**用于选择使用哪个专家，模型的实际输出为各个模型的输出与门控模型的权重组合。各个专家模型可采用不同的函数（各种线性或非线性函数）。混合专家系统就是将多个模型整合到一个单独的任务中。 <br>
 
 混合专家系统有两种架构：competitive MoE 和cooperative MoE。competitive MoE中数据的局部区域被强制集中在数据的各离散空间，而cooperative MoE没有进行强制限制。<br>
@@ -28,24 +28,24 @@
 ![fraction11](https://github.com/ZoeYuhan/machine-learning/blob/master/images/moe_11.gif?raw=true) <br>
 
 
-###**实验结果：**
+### **实验结果：**
 
-####**不同数据集相同k值：**
+#### **不同数据集相同k值：**
 1. k=2使用线性数据集，采用SGD和FTRL两种训练方式，结果如下：
-![这里写图片描述](http://img.blog.csdn.net/20171109114314798?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-![这里写图片描述](http://img.blog.csdn.net/20171109114547351?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![bar1](https://github.com/ZoeYuhan/machine-learning/blob/master/images/bat_result1.png?raw=true) <br>
+![bar2](https://github.com/ZoeYuhan/machine-learning/blob/master/images/bat_result2.png?raw=true) <br>
 2. k=2使用非线性数据集，采用SGD和FTRL两种训练方式，结果如下：
-![这里写图片描述](http://img.blog.csdn.net/20171109114629506?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-![这里写图片描述](http://img.blog.csdn.net/20171109114640206?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![circle1](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_result1.png?raw=true) <br>
+![circle2](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_result2.png?raw=true) <br>
 
 
-####**相同数据集不同k值：**
+#### **相同数据集不同k值：**
 1. k=1:
-![这里写图片描述](http://img.blog.csdn.net/20171109115145981?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-![这里写图片描述](http://img.blog.csdn.net/20171109115224550?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![k=1](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_k=1_2.png?raw=true) <br>
+![k=1](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_k=1_1.png?raw=true) <br>
 2. k=2:
-![这里写图片描述](http://img.blog.csdn.net/20171109115341274?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-![这里写图片描述](http://img.blog.csdn.net/20171109115353917?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![k=2](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_k=2_1.png?raw=true) <br>
+![k=2](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_k=2_2.png?raw=true) <br>
 3. k=4:
-![这里写图片描述](http://img.blog.csdn.net/20171109115408903?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-![这里写图片描述](http://img.blog.csdn.net/20171109115422626?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvWm9lX1N1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![k=4](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_k=4_1.png?raw=true) <br>
+![k=4](https://github.com/ZoeYuhan/machine-learning/blob/master/images/circle_k=4_2.png?raw=true) <br>
