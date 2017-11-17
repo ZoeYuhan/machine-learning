@@ -102,5 +102,7 @@ Finish[ Cost: 21.23  sec]
 ```
 
 **Celery**
+
+---
 ![celery](https://github.com/ZoeYuhan/machine-learning/blob/master/images/celery.png)
 
