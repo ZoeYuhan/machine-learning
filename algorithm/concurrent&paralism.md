@@ -3,7 +3,7 @@
 
 并发 VS 并行：
        首先并发**不等于**并行，盗用一张Erlang之父Joe Armstrong画的图：
-       ![并发VS并行](https://github.com/danielgy/TensorFlow_toturial/blob/master/python/image/concurrent%26paralism.jpg)
+       ![并发VS并行](https://github.com/ZoeYuhan/machine-learning/blob/master/images/concurrent%26paralism.jpg)
        
 ---
        并发：不要求“同时”进行（看起来像多任务）
@@ -102,5 +102,5 @@ Finish[ Cost: 21.23  sec]
 ```
 
 **Celery**
-![celery](https://github.com/danielgy/TensorFlow_toturial/blob/master/python/image/celery.jpg)
+![celery](https://github.com/ZoeYuhan/machine-learning/blob/master/images/celery.png)
 
